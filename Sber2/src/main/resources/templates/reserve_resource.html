@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Зарезервировать ресурсы</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Зарезервировать ресурсы</h1>
+    <form action="/reservations/reserve" method="post">
+        <div class="form-group">
+            <label for="userId">Пользователь</label>
+            <select class="form-control" id="userId" name="userId" required>
+                <option value="" disabled selected>Выберете пользователя</option>
+                <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="resourceId">Ресурс</label>
+            <select class="form-control" id="resourceId" name="resourceId" required>
+                <option value="" disabled selected>Выберете ресурс</option>
+                <option th:each="resource : ${resources}" th:value="${resource.id}" th:text="${resource.name}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="periodStart">Период начала</label>
+            <input type="date" class="form-control" id="periodStart" name="periodStart" required>
+        </div>
+        <div class="form-group">
+            <label for="periodEnd">Период окончания</label>
+            <input type="date" class="form-control" id="periodEnd" name="periodEnd" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Зарезервировать</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
